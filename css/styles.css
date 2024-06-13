@@ -350,6 +350,8 @@ summary {
   cursor: pointer;
 }
 
+
+
 template {
   display: none;
 }
@@ -10022,6 +10024,19 @@ a.text-black:hover, a.text-black:focus {
 
 .text-decoration-none {
   text-decoration: none !important;
+}
+
+.about-section {
+    background-color: black;
+    color: white;
+}
+
+.about-section a {
+    color: white;
+}
+
+.about-section a:hover {
+    color: #64a19d; /* Or any other color that fits your design */
 }
 
 .text-break {
