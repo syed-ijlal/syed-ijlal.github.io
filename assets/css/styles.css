@@ -1109,6 +1109,93 @@ margin-bottom: var(--mb-0-5);
     }
 }
 
+
+
+/* Center titles */
+.section__title, .section__subtitle {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.section__subtitle {
+    font-size: 1.2rem;
+}
+
+/* Skills Section */
+.skills__container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Skills header */
+.skills__header {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    background-color: #f3f3f3;
+    padding: 15px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.skills__header:hover {
+    background-color: #e6e6e6;
+}
+
+/* Icons and arrows */
+.skills__icon {
+    font-size: 1.5rem;
+}
+
+.skills__arrow {
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+/* Skills title and subtitle */
+.skills__title {
+    font-size: 1.4rem;
+}
+
+.skills__subtitle {
+    font-size: 1rem;
+    color: #888;
+}
+
+/* Skills list (initially hidden) */
+.skills__list {
+    display: none;
+    padding: 10px 0;
+}
+
+.skills__data {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px solid #ddd;
+}
+
+.skills__name {
+    font-size: 1.1rem;
+}
+
+.skills__level {
+    font-size: 1rem;
+    color: #555;
+}
+
+/* Expanded skill */
+.skills__content.active .skills__list {
+    display: block;
+}
+
+.skills__content.active .skills__arrow {
+    transform: rotate(180deg);
+}
+
+
 /* For large devices */
 @media screen and (min-width: 1024px){
     .header,
