@@ -34,23 +34,7 @@ function linkAction() {
 navLink.forEach(n => n.addEventListener('click', linkAction))
 
 
-/*==================== ACCORDION SKILLS ====================*/
-const skillsContent = document.getElementsByClassName('skills__content'),
-    skillsHeader = document.querySelectorAll('.skills__header')
 
-function toggleSkills() {
-    let itemClass = this.parentNode.className
-
-    for (i = 0; i < skillsContent.length; i++) {
-        skillsContent[i].className = 'skills__content skills__close'
-    }
-    if (itemClass === 'skills__content skills__close') {
-        this.parentNode.className = 'skills__content skills__open'
-    }
-}
-skillsHeader.forEach((el) => {
-    el.addEventListener('click', toggleSkills)
-})
 /*==================== QUALIFICATION TABS ====================*/
 const tabs = document.querySelectorAll('[data-target]'),
     tabContents = document.querySelectorAll('[data-content]')
@@ -107,23 +91,6 @@ let swiperPortfolio = new Swiper('.portfolio__container', {
     }
 });
 
-/*==================== TESTIMONIAL ====================*/
-let swiperTestimonial = new Swiper('.testimonial__container', {
-    loop: true,
-    grabCursor: true,
-    spaceBetween: 48,
-
-    pagination: {
-        el: '.swiper-pagination',
-        clickable: true,
-        dynamicBullets: true,
-    },
-    breakpoints: {
-        568: {
-            slidesPerView: 2,
-        }
-    }
-});
 
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 const sections = document.querySelectorAll('section[id]')
@@ -191,3 +158,22 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+// Select all skill headers
+const skillHeaders = document.querySelectorAll('.skills__header');
+
+skillHeaders.forEach((header) => {
+    header.addEventListener('click', () => {
+        // Toggle the active class on the clicked skill content
+        const parentContent = header.parentNode;
+        parentContent.classList.toggle('active');
+        
+        // Close any other open skill content
+        const otherContents = document.querySelectorAll('.skills__content');
+        otherContents.forEach((content) => {
+            if (content !== parentContent) {
+                content.classList.remove('active');
+            }
+        });
+    });
+});
