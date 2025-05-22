@@ -21,26 +21,41 @@
             transition: background-color 0.3s, color 0.3s;
         }
         body.dark-mode {
-            background-color: #1a1a2e;
+            background-color: #1a1a2e; /* Darker background */
             color: #e0e0e0;
         }
         header {
-            background: linear-gradient(135deg, #00b4d8, #7209b7);
+            background: linear-gradient(135deg, #00b4d8, #7209b7, #480ca8, #0077b6);
+            background-size: 400% 400%; /* For gradient animation */
             color: #fff;
             padding: 120px 20px;
             text-align: center;
             position: relative;
             overflow: hidden;
+            animation: animateGradient 15s ease infinite;
         }
-        header::after {
+        @keyframes animateGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        header::before { /* Renamed from ::after for stacking context, if needed */
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1), transparent);
-            animation: pulse 15s infinite;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background:
+                radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.15) 0%, transparent 40%),
+                radial-gradient(ellipse at 30% 70%, rgba(200,200,255,0.1) 0%, transparent 40%);
+            animation: aurora 20s linear infinite alternate;
+            opacity: 0.7;
+        }
+        @keyframes aurora {
+            0% { transform: translate(0,0) rotate(0deg); }
+            25% { transform: translate(5px, 10px) rotate(5deg); }
+            50% { transform: translate(-5px, -10px) rotate(-5deg); }
+            75% { transform: translate(10px, -5px) rotate(3deg); }
+            100% { transform: translate(0,0) rotate(0deg); }
         }
         header h1 {
             font-size: 4rem;
@@ -48,45 +63,61 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             animation: slideIn 1s ease-out;
+            position: relative; /* Ensure text is above pseudo-elements */
+            z-index: 1;
         }
         header p {
             font-size: 1.5rem;
             margin: 15px 0 30px;
             animation: fadeIn 1.5s ease-out;
+            position: relative;
+            z-index: 1;
         }
         .theme-toggle {
             position: absolute;
-            top: 20px;
-            right: 20px;
-            background: none;
-            border: none;
+            top: 25px;
+            right: 25px;
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
             font-size: 1.5rem;
             color: #fff;
             cursor: pointer;
-            transition: transform 0.3s;
+            transition: transform 0.4s ease, background-color 0.3s;
+            z-index: 2; /* Above header effects */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .theme-toggle:hover {
-            transform: rotate(180deg);
+            transform: rotate(360deg) scale(1.1);
+            background: rgba(255,255,255,0.2);
         }
         nav {
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.85); /* Slightly less opaque */
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(12px); /* Enhanced blur */
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            text-align: center; /* Center nav links */
         }
         nav a {
-            color: #fff;
-            padding: 12px 25px;
+            color: #e0e0e0; /* Lighter color for dark nav */
+            padding: 14px 22px;
             text-decoration: none;
             font-weight: 600;
-            transition: color 0.3s, background 0.3s;
-        }
-        nav a:hover {
-            color: #00b4d8;
-            background: rgba(255, 255, 255, 0.1);
+            transition: color 0.3s, background-color 0.3s, transform 0.2s ease-out;
+            margin: 0 5px; /* Spacing for centered links */
             border-radius: 5px;
+        }
+        nav a:hover, nav a.active {
+            color: #00b4d8;
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
         }
         .container {
             max-width: 1300px;
@@ -95,6 +126,8 @@
         }
         section {
             margin-bottom: 100px;
+            padding-top: 70px; /* Offset for sticky nav */
+            margin-top: -70px; /* Negative margin to counteract padding */
             opacity: 0;
             transform: translateY(30px);
             animation: fadeInUp 0.8s ease forwards;
@@ -104,18 +137,22 @@
             font-weight: 700;
             text-align: center;
             color: #00b4d8;
-            margin-bottom: 40px;
+            margin-bottom: 50px; /* Increased margin */
             position: relative;
+        }
+        body.dark-mode section h2 {
+            color: #4dabf7; /* Lighter blue for dark mode headings */
         }
         section h2::after {
             content: '';
-            width: 50px;
+            width: 60px; /* Wider accent */
             height: 4px;
             background: #7209b7;
             position: absolute;
-            bottom: -10px;
+            bottom: -15px; /* Further down */
             left: 50%;
             transform: translateX(-50%);
+            border-radius: 2px;
         }
         .about-me {
             display: flex;
@@ -124,64 +161,70 @@
             background: #fff;
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); /* Softer shadow */
         }
         body.dark-mode .about-me {
-            background: #2a2a3e;
+            background: #2a2a3e; /* Consistent dark card bg */
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
         .about-me img {
             width: 220px;
             height: 220px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid #00b4d8;
-            transition: transform 0.3s;
+            border: 6px solid #00b4d8; /* Thicker border */
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
         }
         .about-me img:hover {
-            transform: scale(1.05);
+            transform: scale(1.08) rotate(3deg); /* More playful hover */
+            box-shadow: 0 8px 25px rgba(0, 180, 216, 0.5);
         }
         .about-me p {
             font-size: 1.2rem;
-            color: #636e72;
+            color: #555;
         }
         body.dark-mode .about-me p {
-            color: #b0b0c0;
+            color: #c0c0d0; /* Lighter text for dark mode */
         }
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); /* Slightly wider min */
             gap: 30px;
         }
         .card {
             background: #fff;
-            padding: 35px;
+            padding: 30px; /* Standardized padding */
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            transition: all 0.4s ease;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             overflow: hidden;
         }
         body.dark-mode .card {
             background: #2a2a3e;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
         }
-        .card::before {
+        .card::before { /* Interactive border effect */
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
             height: 5px;
             background: linear-gradient(90deg, #00b4d8, #7209b7);
-            transition: height 0.3s;
+            transition: width 0.4s ease-out;
         }
         .card:hover::before {
-            height: 100%;
-            opacity: 0.1;
+            width: 100%;
         }
         .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+            transform: translateY(-12px); /* Slightly more lift */
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.12);
+        }
+        body.dark-mode .card:hover {
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3);
         }
         .card h3 {
             font-size: 1.6rem;
@@ -189,56 +232,174 @@
             color: #7209b7;
             margin-bottom: 15px;
         }
+        body.dark-mode .card h3 {
+            color: #9d4edd; /* Brighter purple for dark mode */
+        }
         .card p {
-            font-size: 1.1rem;
+            font-size: 1.05rem; /* Slightly smaller for more content */
             color: #636e72;
+            margin-bottom: 10px;
         }
         body.dark-mode .card p {
             color: #b0b0c0;
         }
         .card .date {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             color: #95a5a6;
+            font-style: italic;
         }
-        .contact {
+        body.dark-mode .card .date {
+            color: #8a8a9e;
+        }
+
+        /* Project Card Specifics */
+        .project-image-placeholder {
+            width: 100%;
+            height: 180px;
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            color: #aaa;
+            background-image: url('https://via.placeholder.com/300x180/e0e0e0/aaaaaa?text=Project+Image');
+            background-size: cover;
+            background-position: center;
+        }
+        body.dark-mode .project-image-placeholder {
+            background-color: #3a3a4f;
+            color: #777;
+            background-image: url('https://via.placeholder.com/300x180/3a3a4f/777777?text=Project+Image');
+        }
+        .project-links a {
+            color: #0077b6;
+            text-decoration: none;
+            margin: 0 10px;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+        .project-links a:hover {
+            color: #7209b7;
+        }
+        body.dark-mode .project-links a {
+            color: #4dabf7;
+        }
+        body.dark-mode .project-links a:hover {
+            color: #9d4edd;
+        }
+        .project-links i {
+            margin-right: 5px;
+        }
+
+        /* Skills Card Specifics */
+        .skills-card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .skills-card-content i {
+            font-size: 2.5rem; /* Larger icons */
+            margin-bottom: 15px;
+            color: #00b4d8;
+            transition: transform 0.3s ease;
+        }
+        .card:hover .skills-card-content i {
+            transform: scale(1.1) rotate(-5deg);
+        }
+        body.dark-mode .skills-card-content i {
+            color: #4dabf7;
+        }
+        .skills-card-content p {
+            line-height: 1.8;
+        }
+
+        .contact { /* Contact section styling */
             text-align: center;
+            background: #fff;
+            padding: 50px 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
         }
-        .contact a {
-            display: inline-block;
-            background: #00b4d8;
-            color: #fff;
-            padding: 15px 40px;
-            border-radius: 50px;
+        body.dark-mode .contact {
+            background: #2a2a3e;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .contact p { /* Contact text */
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+        .contact .email-link { /* Styling for the email link itself */
+            color: #0077b6;
             text-decoration: none;
             font-weight: 600;
-            transition: all 0.3s ease;
+            transition: color 0.3s;
         }
-        .contact a:hover {
-            background: #7209b7;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        .contact .email-link:hover {
+            color: #7209b7;
         }
+        body.dark-mode .contact .email-link {
+            color: #4dabf7;
+        }
+        body.dark-mode .contact .email-link:hover {
+            color: #9d4edd;
+        }
+
         .social-links {
-            margin-top: 20px;
+            margin-top: 25px;
         }
         .social-links a {
             color: #2d3436;
-            font-size: 1.5rem;
-            margin: 0 15px;
-            transition: color 0.3s;
+            font-size: 1.8rem; /* Larger social icons */
+            margin: 0 18px;
+            transition: color 0.3s, transform 0.3s ease;
+            display: inline-block; /* For transform to work */
         }
         body.dark-mode .social-links a {
             color: #e0e0e0;
         }
         .social-links a:hover {
             color: #00b4d8;
+            transform: translateY(-5px) scale(1.1); /* Lift and scale effect */
         }
         footer {
-            background: #0f0f1a;
+            background: #0f0f1a; /* Darker footer */
             color: #b0b0c0;
             text-align: center;
-            padding: 25px;
-            font-size: 0.9rem;
+            padding: 30px 20px; /* More padding */
+            font-size: 0.95rem;
+            margin-top: 80px; /* Space before footer */
         }
+        .back-to-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background-color: #00b4d8;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5rem;
+            text-align: center;
+            line-height: 50px; /* Vertically center icon */
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, transform 0.3s, background-color 0.3s;
+            z-index: 999;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .back-to-top:hover {
+            background-color: #7209b7;
+            transform: scale(1.1);
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
         @keyframes fadeInUp {
             to {
                 opacity: 1;
@@ -253,25 +414,40 @@
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        @keyframes pulse {
+        /* Pulse was removed for aurora, keeping keyframe if needed later */
+        /* @keyframes pulse {
             0% { transform: scale(1); }
             50% { transform: scale(1.2); }
             100% { transform: scale(1); }
+        } */
+
+        @media (max-width: 992px) { /* Tablet */
+            .grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            }
         }
-        @media (max-width: 768px) {
+
+        @media (max-width: 768px) { /* Mobile */
             header h1 { font-size: 2.8rem; }
             header p { font-size: 1.2rem; }
             .about-me { flex-direction: column; text-align: center; }
+            .about-me img { width: 180px; height: 180px;}
             .grid { grid-template-columns: 1fr; }
+            nav { padding: 10px 0; }
+            nav a { padding: 10px 15px; margin: 0 2px; font-size: 0.9rem;}
+            section { padding-top: 60px; margin-top: -60px; }
+            section h2 { font-size: 2.4rem; }
+            .theme-toggle { top: 15px; right: 15px; width: 40px; height: 40px; font-size: 1.3rem;}
         }
     </style>
 </head>
 <body>
-    <header>
+    <header id="home">
         <button class="theme-toggle" aria-label="Toggle Theme"><i class="fas fa-moon"></i></button>
         <h1>Syed Ijlal</h1>
         <p>Software Engineer | Innovator in AI & FinTech</p>
     </header>
+
     <nav>
         <a href="#home">Home</a>
         <a href="#about">About</a>
@@ -280,14 +456,15 @@
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
     </nav>
+
     <div class="container">
         <section id="about">
             <h2>About Me</h2>
             <div class="about-me">
-                <img src="assets/img/Profile.jpg" alt="Syed Ijlal">
-                <p>I’m a Master’s student in Software Engineering, specializing in Python, C/C++, Java (Spring Boot), and C#. With a passion for AI, Machine Learning, and FinTech, I excel in building scalable solutions and thrive in collaborative, innovative settings.</p>
+                <img src="https://via.placeholder.com/220/00b4d8/ffffff?text=SI" alt="Syed Ijlal"> <p>I’m a Master’s student in Software Engineering, specializing in Python, C/C++, Java (Spring Boot), and C#. With a passion for AI, Machine Learning, and FinTech, I excel in building scalable solutions and thrive in collaborative, innovative settings.</p>
             </div>
         </section>
+
         <section id="experience">
             <h2>Experience</h2>
             <div class="grid">
@@ -311,66 +488,188 @@
                 </div>
             </div>
         </section>
+
         <section id="projects">
             <h2>Projects</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>AI-Powered Chatbot</h3>
+                    <div class="project-image-placeholder"></div> <h3>AI-Powered Chatbot</h3>
                     <p>Built a conversational AI using Python and TensorFlow for real-time customer support.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>Healthcare Dashboard</h3>
+                    <div class="project-image-placeholder"></div> <h3>Healthcare Dashboard</h3>
                     <p>Created a responsive dashboard with Vue.js and Django for medical data visualization.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> View Demo</a>
+                        <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    </div>
                 </div>
-                 <div class="card">
-                    <h3>A smart patient health monitoring system using Internet of Things</h3>
-                    <p>Bachelor Thesis</p>
+                <div class="card">
+                    <div class="project-image-placeholder"></div> <h3>Smart Patient Health Monitoring</h3>
+                    <p>Bachelor Thesis: An IoT-based system for real-time patient health tracking and alerts.</p>
+                    <div class="project-links">
+                        <a href="#" target="_blank"><i class="fas fa-book"></i> Read Thesis</a>
+                         <a href="#" target="_blank"><i class="fab fa-github"></i> Source Code</a>
+                    </div>
                 </div>
             </div>
         </section>
+
         <section id="skills">
             <h2>Skills</h2>
             <div class="grid">
                 <div class="card">
-                    <h3>Frontend</h3>
-                    <p>HTML<br>CSS<br>JavaScript<br>Vue.js</p>
+                    <div class="skills-card-content">
+                        <i class="fas fa-laptop-code"></i>
+                        <h3>Frontend</h3>
+                        <p>HTML | CSS | JavaScript<br>Vue.js | Responsive Design</p>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>Backend</h3>
-                    <p>Node.js<br>Python<br>Spring Boot</p>
+                    <div class="skills-card-content">
+                        <i class="fas fa-server"></i>
+                        <h3>Backend</h3>
+                        <p>Node.js | Python (Flask/Django)<br>Java (Spring Boot) | REST APIs</p>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>Languages</h3>
-                    <p>C++<br>Java<br>C#<br>Python</p>
+                    <div class="skills-card-content">
+                        <i class="fas fa-code"></i>
+                        <h3>Languages</h3>
+                        <p>Python | Java | C#<br>C/C++ | SQL</p>
+                    </div>
                 </div>
                 <div class="card">
-                    <h3>Tools</h3>
-                    <p>Git<br>Postman<br>Docker</p>
+                    <div class="skills-card-content">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tools & Other</h3>
+                        <p>Git & GitHub | Docker<br>Postman | Agile | FinTech Basics</p>
+                    </div>
                 </div>
             </div>
         </section>
+
         <section id="contact">
             <h2>Contact Me</h2>
             <div class="contact">
-                <p>Email: <a href="mailto:engrijlaneu@outlook.com">engrijlaneu@outlook.com</a></p>
+                <p>Interested in collaborating or have a question? Feel free to reach out!</p>
+                <p>Email: <a href="mailto:engrijlaneu@outlook.com" class="email-link">engrijlaneu@outlook.com</a></p>
                 <div class="social-links">
-                    <a href="https://www.linkedin.com/in/syed-ijlal/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/ijlal910/ijlal910" target="_blank"><i class="fab fa-github"></i></a>
-                </div>
+                    <a href="https://www.linkedin.com/in/syed-ijlal/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/ijlal910/ijlal910" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+                    </div>
             </div>
         </section>
     </div>
+
     <footer>
-        <p>© 2025 Syed Ijlal. Built with passion.</p>
+        <p>&copy; 2025 Syed Ijlal. Built with <i class="fas fa-heart" style="color: #e25555;"></i> and passion.</p>
     </footer>
+
+    <a href="#home" class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up"></i></a>
+
     <script>
+        // Theme Toggle
         const toggleButton = document.querySelector('.theme-toggle');
+        const body = document.body;
+        const toggleIcon = toggleButton.querySelector('i');
+
+        // Check for saved theme preference
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            toggleIcon.classList.remove('fa-moon');
+            toggleIcon.classList.add('fa-sun');
+        }
+
         toggleButton.addEventListener('click', () => {
-            document.body.classList.toggle('dark-mode');
-            const icon = toggleButton.querySelector('i');
-            icon.classList.toggle('fa-moon');
-            icon.classList.toggle('fa-sun');
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                toggleIcon.classList.remove('fa-moon');
+                toggleIcon.classList.add('fa-sun');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                toggleIcon.classList.remove('fa-sun');
+                toggleIcon.classList.add('fa-moon');
+                localStorage.setItem('theme', 'light');
+            }
         });
+
+        // Scroll Spy for Navigation
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                // Adjust for sticky nav height if needed, 70 is current nav/section offset
+                if (pageYOffset >= (sectionTop - sectionHeight / 3 - 70) ) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+            // Special case for home when at the very top
+            if (pageYOffset < sections[0].offsetTop - sections[0].clientHeight / 3 - 70) {
+                 navLinks.forEach(link => link.classList.remove('active'));
+                 document.querySelector('nav a[href="#home"]').classList.add('active');
+            }
+        });
+
+        // Back to Top Button
+        const backToTopButton = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) { // Show button after scrolling 300px
+                backToTopButton.classList.add('visible');
+            } else {
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        // Smooth scroll for back-to-top and nav links (already handled by scroll-behavior: smooth; but this can be a JS fallback)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                // Only prevent default if it's not the theme toggle or external link
+                if(this.getAttribute('href').startsWith('#') && this.getAttribute('href').length > 1 && !this.classList.contains('theme-toggle')) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Section fade-in animation on scroll (observer method is more performant for many elements)
+        // The CSS animation handles initial load. This is for elements dynamically loaded or for more control.
+        // For now, CSS animation is sufficient.
+        const animatedSections = document.querySelectorAll('section');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationDelay = entry.target.dataset.delay || '0s'; // Example for stagger
+                    entry.target.classList.add('fade-in-visible'); // You'd need a .fade-in-visible class
+                    // observer.unobserve(entry.target); // Optional: stop observing after animation
+                }
+            });
+        }, { threshold: 0.1 }); // Adjust threshold as needed
+
+        // animatedSections.forEach(section => {
+        //     observer.observe(section);
+        // });
+        // Note: The current CSS animation `fadeInUp` for sections is already doing a good job.
+        // The IntersectionObserver is a more advanced way if you need more complex scroll-triggered animations.
+        // For simplicity and given the current setup, the existing CSS animation is fine.
+
     </script>
 </body>
 </html>
