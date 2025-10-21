@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syed Ijlal | Software Engineer - QuantumLeap</title>
+    <title>Syed Ijlal | AI & Software Engineer</title>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -283,6 +283,7 @@
         .about-text p {
             margin-bottom: 1rem;
             color: var(--text-secondary-dark);
+            font-size: 1.05rem; /* Slightly larger for readability */
         }
         .about-text .highlight { color: var(--accent-primary-dark); font-weight: 500; }
 
@@ -326,6 +327,19 @@
             flex-grow: 1; /* Pushes links to bottom if card heights vary */
             margin-bottom: 1.5rem;
         }
+        /* Specific styling for lists inside cards (for Education/Experience) */
+        .card ul {
+            list-style-position: inside;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        .card li {
+            font-size: 0.95rem;
+            color: var(--text-primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        
         .project-links { margin-top: auto; } /* Pushes links to bottom */
         .project-links a {
             color: var(--accent-secondary-dark);
@@ -357,7 +371,14 @@
             font-size: 1.3rem;
             color: var(--heading-dark);
             margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
         }
+        .skill-category h3 i {
+            margin-right: 0.7rem;
+            color: var(--accent-primary-dark);
+        }
+        
         .skill-category ul {
             list-style: none;
             padding-left: 0;
@@ -372,6 +393,7 @@
             color: var(--accent-primary-dark);
             margin-right: 0.7rem;
             width: 20px; /* Align icons */
+            text-align: center;
         }
 
 
@@ -486,7 +508,7 @@
                 box-shadow: 0 5px 10px rgba(0,0,0,0.1);
             }
             .nav-links.active {
-                max-height: 300px; /* Adjust as needed */
+                max-height: 350px; /* Adjust as needed for new links */
                 padding: 1rem 0;
             }
             .nav-links li { margin: 0.8rem 0; }
@@ -511,9 +533,11 @@
         <ul class="nav-links" id="navLinks">
             <li><a href="#home" class="active">Home</a></li>
             <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#certifications">Certifications</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
         <div>
@@ -527,7 +551,7 @@
     <header class="hero" id="home">
         <div class="hero-content">
             <h1>Hi, I'm Syed Ijlal<span>.</span></h1>
-            <p class="subtitle">Software Engineer | Innovator in AI & FinTech</p>
+            <p class="subtitle">Software Engineer | Researcher in AI & Healthcare Technology</p>
             <a href="#projects" class="btn">View My Work</a>
             <a href="#contact" class="btn btn-secondary">Get In Touch</a>
         </div>
@@ -542,9 +566,30 @@
                         <img src="assets/img/Profile.jpg" alt="Syed Ijlal">
                     </div>
                     <div class="about-text animate-on-scroll" style="transition-delay: 0.2s;">
-                        <h3>Crafting Digital Solutions with Precision & Passion</h3>
-                        <p>I’m a Master’s student in Software Engineering with a robust foundation in <span class="highlight">Python, C/C++, Java (Spring Boot), and C#</span>. My core passion lies at the intersection of <span class="highlight">Artificial Intelligence, Machine Learning, and Financial Technology (FinTech)</span>.</p>
-                        <p>I am dedicated to architecting and developing scalable, efficient software solutions that tackle real-world challenges. I thrive in dynamic, collaborative environments where innovation is key, and I'm always eager to learn and apply new technologies to push the boundaries of what's possible.</p>
+                        <h3>Developing Scalable Solutions with AI</h3>
+                        <p>I’m a Master’s student in Software Engineering at Northeastern University [cite: 5, 6], building on a B.S. in Computer Engineering where I <span class="highlight">ranked 1st in my cohort</span>.</p>
+                        <p>My passion lies at the intersection of <span class="highlight">Artificial Intelligence, Healthcare Technology, and Full-Stack Development</span>. I have hands-on experience developing scalable backend services with <span class="highlight">Java Spring Boot</span> , building responsive front-ends with <span class="highlight">Vue.js</span> [cite: 22], and applying <span class="highlight">Vision Transformers</span> and <span class="highlight">TensorFlow</span> to complex problems[cite: 40, 48].</p>
+                        <p>I thrive in dynamic, collaborative environments and am dedicated to architecting efficient software that tackles real-world challenges, particularly in AI-driven healthcare and computer vision.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="education" class="section">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Education</h2>
+                <div class="grid">
+                    <div class="card animate-on-scroll">
+                        <h3>M.S. in Software Engineering</h3>
+                        <p class="company-date">Northeastern University, China | Sept. 2023 – June 2026 (Expected) [cite: 5, 6, 8, 9]</p>
+                        <p><strong>GPA:</strong> 3.52/4.0 [cite: 7]</p>
+                        <p><strong>Relevant Coursework:</strong> Advanced AI, Advanced Software Engineering, Advanced Algorithm Design, Applied Statistics[cite: 10].</p>
+                    </div>
+                    <div class="card animate-on-scroll" style="transition-delay: 0.15s;">
+                        <h3>B.S. in Computer Engineering</h3>
+                        <p class="company-date">Bahauddin Zakariya University, Pakistan | Sept. 2019 – July 2023 [cite: 11, 12, 16, 17]</p>
+                        <p><strong>GPA:</strong> 3.80/4.0 (<strong>Ranked 1st in Cohort</strong>) </p>
+                        <p><strong>Thesis:</strong> IoT-Based Smart Patient Health Monitoring System[cite: 14].</p>
                     </div>
                 </div>
             </div>
@@ -555,19 +600,19 @@
                 <h2 class="section-title animate-on-scroll">My Journey</h2>
                 <div class="grid">
                     <div class="card animate-on-scroll">
-                        <h3>Software Engineering Intern</h3>
-                        <p class="company-date">NEUSOFT Medical | Sep 2024 - Mar 2025</p>
-                        <p>Developing and refining backend systems, focusing on data processing pipelines and API integrations for advanced medical imaging software. Contributing to AI-driven analytics features.</p>
+                        <h3>Software Engineering Practical Training</h3>
+                        <p class="company-date">NEUSOFT, China | Sept. 2024 - Mar. 2025 [cite: 18, 19, 20]</p>
+                        <p>Built scalable backend services with Java Spring Boot in a microservices architecture. Developed responsive Vue.js front-end interfaces [cite: 22] and integrated AI-driven tools, including a chatbot and a brain cancer detection module.</p>
                     </div>
                     <div class="card animate-on-scroll" style="transition-delay: 0.15s;">
                         <h3>IT Intern</h3>
-                        <p class="company-date">Lahore Electric Supply Company | Jul 2022 - Sep 2022</p>
-                        <p>Assisted in enhancing IT infrastructure, network troubleshooting, and developed intuitive user interfaces for internal asset management applications, improving operational efficiency.</p>
+                        <p class="company-date">Lahore Electric Supply Company (LESCO) | Jul 2022 - Sep 2022 [cite: 24, 25, 26]</p>
+                        <p>Enhanced data center efficiency through virtualization management[cite: 27]. Deployed network monitoring solutions to resolve issues within SLA timelines, minimizing downtime[cite: 28].</p>
                     </div>
                     <div class="card animate-on-scroll" style="transition-delay: 0.3s;">
-                        <h3>GUI Developer</h3>
-                        <p class="company-date">Punjab Information Technology Board | Jun 2021 - Dec 2021</p>
-                        <p>Designed and implemented user-friendly Graphical User Interfaces for various government software projects, significantly improving user experience and accessibility.</p>
+                        <h3>UI/UX Developer</h3>
+                        <p class="company-date">Punjab Information Technology Board | Jun 2021 - Dec 2021 [cite: 29, 30]</p>
+                        <p>Designed intuitive UI/UX prototypes for government-backed startups [cite: 31] and collaborated closely with developers to ensure accurate, user-centric design implementation.</p>
                     </div>
                 </div>
             </div>
@@ -578,24 +623,27 @@
                 <h2 class="section-title animate-on-scroll">Featured Projects</h2>
                 <div class="grid">
                     <div class="card animate-on-scroll">
-                        <h3>AI-Powered Conversational Agent</h3>
-                        <p>Engineered an intelligent chatbot using Python, TensorFlow, and NLP techniques for dynamic, real-time customer support and engagement, capable of understanding context and learning from interactions.</p>
+                        <h3>Steel Surface Defect Detection</h3>
+                        <p class="company-date">Academic Project | Nov. 2023 - Mar. 2024 [cite: 39]</p>
+                        <p>Applied Vision Transformers (ViT) on the NEU dataset, achieving a 15% improvement in defect detection accuracy over traditional models[cite: 40]. Optimized model performance via hyperparameter tuning and loss curve analysis[cite: 41].</p>
                         <div class="project-links">
                             <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Demo</a>
                             <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                     <div class="card animate-on-scroll" style="transition-delay: 0.15s;">
-                        <h3>Clinical Data Visualization Dashboard</h3>
-                        <p>Created a responsive and interactive healthcare dashboard using Vue.js and Django. It allows medical professionals to visualize complex patient data, track trends, and make informed decisions.</p>
+                        <h3>Hospital Information System (HIS)</h3>
+                        <p class="company-date">Team Project | Nov. 2024 - Mar. 2025 [cite: 34]</p>
+                        <p>Led a team of four to develop a secure Spring Boot backend, reducing patient processing time by 20%[cite: 35]. Designed RESTful APIs for a Vue.js frontend and implemented AI features for patient analytics and brain tumor detection[cite: 36, 37].</p>
                          <div class="project-links">
                             <a href="#" target="_blank"><i class="fas fa-external-link-alt"></i> Demo</a>
                             <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
                         </div>
                     </div>
                     <div class="card animate-on-scroll" style="transition-delay: 0.3s;">
-                        <h3>IoT Smart Health Monitor (Thesis)</h3>
-                        <p>My bachelor thesis involved designing an IoT-based system for continuous patient health monitoring, featuring real-time data acquisition, cloud storage, and alert mechanisms for critical conditions.</p>
+                        <h3>IoT Smart Health Monitor (B.S. Thesis)</h3>
+                        <p class="company-date">Thesis Project | Aug. 2022 - June 2023 [cite: 44]</p>
+                        <p>Developed and deployed a real-time IoT system using various sensors[cite: 45]. The system featured cloud-based data integration and automated alerts for critical health conditions[cite: 45].</p>
                         <div class="project-links">
                             <a href="#" target="_blank"><i class="fas fa-book"></i> Details</a>
                             <a href="#" target="_blank"><i class="fab fa-github"></i> Code</a>
@@ -612,43 +660,68 @@
                     <div class="skill-category animate-on-scroll">
                         <h3><i class="fas fa-code"></i> Programming Languages</h3>
                         <ul>
-                            <li><i class="fab fa-python"></i> Python (Proficient)</li>
-                            <li><i class="fab fa-java"></i> Java (Spring Boot)</li>
-                            <li><i class="fas fa-terminal"></i> C/C++</li>
-                            <li><i class="fab fa-microsoft"></i> C# (.NET)</li>
-                            <li><i class="fab fa-js-square"></i> JavaScript (ES6+)</li>
+                            <li><i class="fab fa-python"></i> Python [cite: 47]</li>
+                            <li><i class="fab fa-java"></i> Java </li>
+                            <li><i class="fas fa-terminal"></i> C++ [cite: 47]</li>
+                            <li><i class="fab fa-microsoft"></i> C# [cite: 47]</li>
+                            <li><i class="fab fa-js-square"></i> JavaScript (Vue.js) [cite: 48]</li>
                         </ul>
                     </div>
                     <div class="skill-category animate-on-scroll" style="transition-delay: 0.1s;">
-                        <h3><i class="fas fa-cogs"></i> Technologies & Frameworks</h3>
+                        <h3><i class="fas fa-cogs"></i> Frameworks & Libraries</h3>
                         <ul>
-                            <li><i class="fas fa-brain"></i> AI/Machine Learning (TensorFlow, Scikit-learn)</li>
-                            <li><i class="fab fa-vuejs"></i> Vue.js, React</li>
-                            <li><i class="fab fa-node-js"></i> Node.js</li>
-                            <li><i class="fas fa-database"></i> SQL, NoSQL (MongoDB)</li>
-                            <li><i class="fab fa-docker"></i> Docker</li>
+                            <li><i class="fas fa-leaf"></i> Spring Boot [cite: 48]</li>
+                            <li><i class="fab fa-vuejs"></i> Vue.js [cite: 48]</li>
+                            <li><i class="fas fa-brain"></i> TensorFlow [cite: 48]</li>
+                            <li><i class="fas fa-robot"></i> Scikit-learn [cite: 48]</li>
                         </ul>
                     </div>
                     <div class="skill-category animate-on-scroll" style="transition-delay: 0.2s;">
-                        <h3><i class="fas fa-tools"></i> Tools & Platforms</h3>
+                        <h3><i class="fas fa-tools"></i> Databases & Tools</h3>
                         <ul>
-                            <li><i class="fab fa-git-alt"></i> Git & GitHub</li>
-                            <li><i class="fas fa-cloud"></i> Cloud Platforms (AWS/Azure basics)</li>
-                            <li><i class="fas fa-project-diagram"></i> Agile Methodologies</li>
-                            <li><i class="fas fa-file-alt"></i> Postman, API Design</li>
-                            <li><i class="fas fa-chart-line"></i> FinTech Concepts</li>
+                            <li><i class="fas fa-database"></i> MySQL [cite: 50]</li>
+                            <li><i class="fas fa-database"></i> Oracle [cite: 50]</li>
+                            <li><i class="fas fa-database"></i> MongoDB [cite: 51]</li>
+                            <li><i class="fab fa-docker"></i> Docker [cite: 50]</li>
+                            <li><i class="fab fa-git-alt"></i> Git & GitHub [cite: 50]</li>
+                            <li><i class="fas fa-file-alt"></i> Postman [cite: 50]</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
+        <section id="certifications" class="section">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Awards & Certifications</h2>
+                <div class="skills-container"> <div class="skill-category animate-on-scroll">
+                        <h3><i class="fas fa-award"></i> Awards & Honors</h3>
+                        <ul>
+                            <li><i class="fas fa-graduation-cap"></i> Chinese Government Scholarship (Full Funding) [cite: 53]</li>
+                            <li><i class="fas fa-medal"></i> Academic Distinction (Ranked 1st in Cohort) [cite: 54]</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category animate-on-scroll" style="transition-delay: 0.1s;">
+                        <h3><i class="fas fa-certificate"></i> Selected Certifications</h3>
+                        <ul>
+                            <li><i class="fas fa-leaf"></i> MongoDB Python Developer Path [cite: 51]</li>
+                            <li><i class="fab fa-python"></i> Python for Data Science and AI, Coursera [cite: 51]</li>
+                            <li><i class="fas fa-book-open"></i> How to Write and Publish a Scientific Paper [cite: 51]</li>
+                            <li><i class="fas fa-cogs"></i> Introduction to Data Engineering, Coursera [cite: 51]</li>
+                            <li><i class="fas fa-shield-alt"></i> Cybersecurity Essentials, Cisco [cite: 51]</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
         <section id="contact" class="section">
             <div class="container">
                 <h2 class="section-title animate-on-scroll">Let's Connect</h2>
                 <div class="contact-content animate-on-scroll">
-                    <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of something impactful. Feel free to reach out!</p>
-                    <a href="mailto:syedijlalbzu@gmail.com" class="btn">Email Me: syedijlalbzu@gmail.com</a>
+                    <p>I'm always open to discussing new projects, research collaborations, or opportunities to be part of something impactful. Feel free to reach out!</p>
+                    <a href="mailto:syedijlalbzu@gmail.com" class="btn">Email Me: syedijlalbzu@gmail.com [cite: 2]</a>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/syed-ijlal/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
                         <a href="https://github.com/syed-ijlal" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
