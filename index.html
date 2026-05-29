@@ -3,24 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Syed Ijlal</title>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+    <meta name="description" content="Portfolio of Hussain Syed Ijlal, M.S. Software Engineering candidate and CSC scholar focused on AI/ML, explainable anomaly detection, computer vision, and healthcare software systems.">
+    <meta name="author" content="Hussain Syed Ijlal">
+    <meta property="og:title" content="Hussain Syed Ijlal | Software Engineer">
+    <meta property="og:description" content="AI/ML and software engineering portfolio featuring financial anomaly detection, healthcare systems, computer vision, and IoT projects.">
+    <meta property="og:type" content="website">
+    <title>Hussain Syed Ijlal | Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --bg-primary: #FFFFFF;
-            --bg-secondary: #F8F9FA;
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8f9fa;
+            --bg-soft: #eef6ff;
             --text-primary: #212529;
-            --text-secondary: #6C757D;
-            --heading: #212529;
-            --accent-primary: #007BFF;
-            --accent-secondary: #0056B3;
-            --border: #DEE2E6;
-            --card-shadow: rgba(0, 0, 0, 0.05);
+            --text-secondary: #5f6b77;
+            --heading: #17202a;
+            --accent-primary: #007bff;
+            --accent-secondary: #0056b3;
+            --border: #dee2e6;
+            --card-shadow: rgba(0, 0, 0, 0.08);
             --font-heading: 'Montserrat', sans-serif;
             --font-body: 'Roboto', sans-serif;
             --transition-speed: 0.2s;
-            --container-width: 900px;
+            --container-width: 1040px;
+            --nav-height: 68px;
         }
 
         * {
@@ -29,50 +38,88 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: var(--font-body);
             background-color: var(--bg-primary);
             color: var(--text-primary);
-            line-height: 1.6;
+            line-height: 1.65;
         }
 
-        /* Navigation */
+        a {
+            color: inherit;
+        }
+
+        a:focus-visible,
+        button:focus-visible {
+            outline: 3px solid rgba(0, 123, 255, 0.35);
+            outline-offset: 3px;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 0.5rem;
+            z-index: 1100;
+            background: var(--accent-primary);
+            color: #fff;
+            padding: 0.7rem 1rem;
+            border-radius: 0.4rem;
+            text-decoration: none;
+        }
+
+        .skip-link:focus {
+            left: 0.5rem;
+        }
+
         .navbar {
             position: fixed;
             top: 0;
             width: 100%;
+            min-height: var(--nav-height);
             padding: 0.8rem 2rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: var(--bg-primary);
+            background-color: rgba(255, 255, 255, 0.96);
             border-bottom: 1px solid var(--border);
+            backdrop-filter: blur(8px);
             z-index: 1000;
         }
 
         .nav-logo {
             font-family: var(--font-heading);
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 1.35rem;
+            font-weight: 800;
             color: var(--heading);
             text-decoration: none;
+            white-space: nowrap;
         }
-        .nav-logo span { color: var(--accent-primary); }
+
+        .nav-logo span {
+            color: var(--accent-primary);
+        }
 
         .nav-links {
             list-style: none;
             display: flex;
+            align-items: center;
+            gap: 1.2rem;
         }
 
-        .nav-links li { margin-left: 1.5rem; }
         .nav-links a {
             text-decoration: none;
             color: var(--text-primary);
-            font-weight: 500;
-            font-size: 0.9rem;
+            font-weight: 600;
+            font-size: 0.92rem;
             transition: color var(--transition-speed);
         }
-        .nav-links a:hover, .nav-links a.active {
+
+        .nav-links a:hover,
+        .nav-links a.active {
             color: var(--accent-primary);
         }
 
@@ -85,196 +132,341 @@
             cursor: pointer;
         }
 
-        /* Hero/Header */
         .header {
-            padding: 6rem 2rem 3rem;
+            padding: 7.5rem 2rem 4rem;
             text-align: center;
-            background-color: var(--bg-secondary);
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, #ffffff 100%);
             border-bottom: 1px solid var(--border);
         }
 
-        .header img {
-            width: 150px;
-            height: 150px;
+        .profile-img {
+            width: 156px;
+            height: 156px;
             border-radius: 50%;
-            margin-bottom: 1rem;
-            border: 2px solid var(--border);
+            margin-bottom: 1.1rem;
+            border: 3px solid #fff;
+            box-shadow: 0 8px 24px var(--card-shadow);
+            object-fit: cover;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.35rem 0.75rem;
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            color: var(--accent-secondary);
+            background: #fff;
+            font-weight: 700;
+            font-size: 0.82rem;
+            margin-bottom: 0.85rem;
         }
 
         .header h1 {
             font-family: var(--font-heading);
-            font-size: 2.5rem;
+            font-size: clamp(2.1rem, 5vw, 3.3rem);
+            line-height: 1.15;
             color: var(--heading);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.65rem;
         }
 
         .header .subtitle {
-            font-size: 1.2rem;
+            font-size: 1.16rem;
             color: var(--text-secondary);
-            margin-bottom: 1rem;
+            margin: 0 auto 1.2rem;
+            max-width: 760px;
         }
 
-        .contact-info {
+        .contact-info,
+        .cta-row {
             display: flex;
             justify-content: center;
-            gap: 2rem;
+            flex-wrap: wrap;
+            gap: 0.8rem 1.2rem;
             margin-bottom: 1rem;
-            font-size: 0.9rem;
+            font-size: 0.94rem;
         }
 
-        .contact-info a {
+        .contact-info a,
+        .contact-info span {
             color: var(--text-secondary);
             text-decoration: none;
         }
 
-        .contact-info a:hover { color: var(--accent-primary); }
+        .contact-info a:hover {
+            color: var(--accent-primary);
+        }
 
-        /* Sections */
+        .button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.45rem;
+            border-radius: 999px;
+            padding: 0.7rem 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid var(--accent-primary);
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed), background var(--transition-speed);
+        }
+
+        .button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 8px 18px var(--card-shadow);
+        }
+
+        .button.primary {
+            color: #fff;
+            background: var(--accent-primary);
+        }
+
+        .button.secondary {
+            color: var(--accent-primary);
+            background: #fff;
+        }
+
         .section {
-            padding: 2rem;
+            padding: 3rem 2rem;
             max-width: var(--container-width);
             margin: 0 auto;
+            scroll-margin-top: calc(var(--nav-height) + 1rem);
         }
 
         .section-title {
             font-family: var(--font-heading);
-            font-size: 1.8rem;
+            font-size: 1.85rem;
             color: var(--heading);
-            margin-bottom: 1.5rem;
-            border-bottom: 2px solid var(--accent-primary);
-            padding-bottom: 0.5rem;
+            margin-bottom: 1.35rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
         }
 
-        /* Lists and Cards */
+        .section-title::after {
+            content: "";
+            height: 2px;
+            flex: 1;
+            background: linear-gradient(90deg, var(--accent-primary), transparent);
+        }
+
+        .lead {
+            color: var(--text-secondary);
+            font-size: 1.03rem;
+            max-width: 900px;
+            margin-bottom: 1.25rem;
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            gap: 1.2rem;
+        }
+
+        .card,
+        .skill-item,
+        .compact-item {
+            background-color: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: transform var(--transition-speed), box-shadow var(--transition-speed), border-color var(--transition-speed);
         }
 
         .card {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: 5px;
-            padding: 1rem;
-            transition: box-shadow var(--transition-speed);
+            padding: 1.15rem;
         }
 
-        .card:hover { box-shadow: 0 2px 8px var(--card-shadow); }
+        .card:hover,
+        .skill-item:hover,
+        .compact-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px var(--card-shadow);
+            border-color: rgba(0, 123, 255, 0.35);
+        }
 
         .card h3 {
             font-family: var(--font-heading);
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--accent-primary);
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.45rem;
         }
 
         .card .meta {
-            font-size: 0.85rem;
+            font-size: 0.87rem;
             color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            font-style: italic;
+            margin-bottom: 0.65rem;
+            font-weight: 500;
         }
 
         .card ul {
-            list-style: disc;
             padding-left: 1.2rem;
-            font-size: 0.9rem;
+            font-size: 0.94rem;
         }
 
-        .card li { margin-bottom: 0.3rem; }
+        .card li {
+            margin-bottom: 0.35rem;
+        }
 
-        /* Research Interests */
-        .research-interests ul {
+        .tag-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.85rem;
+        }
+
+        .tag {
+            display: inline-flex;
+            padding: 0.24rem 0.55rem;
+            border-radius: 999px;
+            background: var(--bg-soft);
+            color: var(--accent-secondary);
+            border: 1px solid rgba(0, 123, 255, 0.16);
+            font-size: 0.78rem;
+            font-weight: 700;
+        }
+
+        .research-interests ul,
+        .skills-grid ul,
+        .compact-list ul {
             list-style: none;
             padding-left: 0;
         }
 
+        .research-interests {
+            margin-top: 1.2rem;
+        }
+
+        .research-interests h3 {
+            font-family: var(--font-heading);
+            font-size: 1.05rem;
+            margin-bottom: 0.65rem;
+        }
+
+        .research-interests ul {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 0.65rem;
+        }
+
         .research-interests li {
-            padding-left: 1rem;
-            position: relative;
-            margin-bottom: 0.5rem;
+            background: var(--bg-secondary);
+            border-left: 3px solid var(--accent-primary);
+            border-radius: 8px;
+            padding: 0.65rem 0.8rem;
+            color: var(--text-secondary);
         }
 
-        .research-interests li::before {
-            content: "•";
-            position: absolute;
-            left: 0;
-            color: var(--accent-primary);
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1.25rem;
         }
 
-        /* Skills */
+        .highlight {
+            background: var(--bg-soft);
+            border: 1px solid rgba(0, 123, 255, 0.14);
+            border-radius: 12px;
+            padding: 0.9rem;
+        }
+
+        .highlight strong {
+            display: block;
+            color: var(--heading);
+            font-family: var(--font-heading);
+            margin-bottom: 0.25rem;
+        }
+
+        .highlight span {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
         .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
             gap: 1rem;
         }
 
         .skill-item {
-            background-color: var(--bg-secondary);
-            padding: 0.8rem;
-            border-left: 3px solid var(--accent-primary);
-            border-radius: 3px;
+            padding: 1rem;
+            border-left: 4px solid var(--accent-primary);
         }
 
         .skill-item h4 {
+            font-family: var(--font-heading);
             font-size: 1rem;
             margin-bottom: 0.5rem;
             color: var(--heading);
         }
 
-        .skill-item ul { list-style: none; padding-left: 0; font-size: 0.9rem; }
-        .skill-item li { margin-bottom: 0.2rem; }
+        .skill-item li,
+        .compact-item {
+            color: var(--text-secondary);
+            font-size: 0.92rem;
+        }
 
-        /* Compact Lists for Certs/Awards */
         .compact-list {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 0.5rem;
-        }
-
-        .compact-item {
-            background-color: var(--bg-secondary);
-            padding: 0.5rem;
-            border-radius: 3px;
-            border-left: 3px solid var(--accent-primary);
-            font-size: 0.85rem;
-        }
-
-        .compact-item strong { color: var(--accent-primary); }
-
-        /* Contact */
-        .contact {
-            text-align: center;
-            padding: 2rem;
-        }
-
-        .social-links {
+            gap: 0.75rem;
             margin-top: 1rem;
         }
 
-        .social-links a {
-            color: var(--text-secondary);
-            font-size: 1.5rem;
-            margin: 0 0.5rem;
-            transition: color var(--transition-speed);
+        .compact-item {
+            padding: 0.75rem 0.85rem;
+            border-left: 4px solid var(--accent-primary);
         }
 
-        .social-links a:hover { color: var(--accent-primary); }
+        .compact-item strong {
+            color: var(--heading);
+        }
 
-        /* Footer */
+        .contact {
+            text-align: center;
+        }
+
+        .social-links {
+            margin-top: 1.2rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .social-links a {
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 1.25rem;
+            border: 1px solid var(--border);
+            border-radius: 50%;
+            text-decoration: none;
+            transition: color var(--transition-speed), border-color var(--transition-speed), transform var(--transition-speed);
+        }
+
+        .social-links a:hover {
+            color: var(--accent-primary);
+            border-color: var(--accent-primary);
+            transform: translateY(-2px);
+        }
+
         footer {
             text-align: center;
-            padding: 1rem;
+            padding: 1.2rem;
             background-color: var(--bg-secondary);
             border-top: 1px solid var(--border);
-            font-size: 0.8rem;
+            font-size: 0.86rem;
             color: var(--text-secondary);
         }
 
-        /* Responsive */
         @media (max-width: 768px) {
-            .navbar { padding: 0.5rem 1rem; }
+            .navbar {
+                padding: 0.65rem 1rem;
+            }
+
             .nav-links {
                 position: absolute;
                 top: 100%;
@@ -282,228 +474,371 @@
                 width: 100%;
                 background-color: var(--bg-primary);
                 flex-direction: column;
-                padding: 1rem;
+                align-items: flex-start;
+                padding: 0 1rem;
                 max-height: 0;
                 overflow: hidden;
-                transition: max-height 0.3s ease;
+                border-bottom: 1px solid transparent;
+                transition: max-height 0.3s ease, padding 0.3s ease, border-color 0.3s ease;
             }
-            .nav-links.active { max-height: 200px; }
-            .nav-links li { margin: 0.5rem 0; }
-            .nav-toggler { display: block; }
-            .contact-info { flex-direction: column; gap: 0.5rem; }
-            .header h1 { font-size: 2rem; }
-            .section { padding: 1.5rem 1rem; }
+
+            .nav-links.active {
+                max-height: 500px;
+                padding: 1rem;
+                border-color: var(--border);
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                width: 100%;
+                padding: 0.35rem 0;
+            }
+
+            .nav-toggler {
+                display: block;
+            }
+
+            .header {
+                padding: 6.4rem 1rem 3rem;
+            }
+
+            .contact-info,
+            .cta-row {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.6rem;
+            }
+
+            .section {
+                padding: 2.4rem 1rem;
+            }
+
+            .section-title {
+                font-size: 1.55rem;
+            }
         }
     </style>
+
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Hussain Syed Ijlal",
+        "url": "https://syed-ijlal.github.io",
+        "email": "mailto:syedijlalbzu@gmail.com",
+        "sameAs": [
+            "https://github.com/syed-ijlal",
+            "https://www.linkedin.com/in/syed-ijlal/"
+        ],
+        "jobTitle": "Software Engineer",
+        "alumniOf": [
+            "Northeastern University",
+            "Bahauddin Zakariya University"
+        ],
+        "knowsAbout": [
+            "Software Engineering",
+            "Artificial Intelligence",
+            "Machine Learning",
+            "Explainable AI",
+            "Computer Vision",
+            "Healthcare Information Systems"
+        ]
+    }
+    </script>
 </head>
 <body>
+    <a class="skip-link" href="#main">Skip to content</a>
 
-    <nav class="navbar" id="navbar">
-        <a href="#home" class="nav-logo">Syed Ijlal<span>.</span></a>
+    <nav class="navbar" id="navbar" aria-label="Primary navigation">
+        <a href="#home" class="nav-logo" aria-label="Go to home">Syed Ijlal<span>.</span></a>
         <ul class="nav-links" id="navLinks">
             <li><a href="#about" class="active">About</a></li>
             <li><a href="#education">Education</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#skills">Skills</a></li>
+            <li><a href="#certifications">Certifications</a></li>
             <li><a href="#contact">Contact</a></li>
         </ul>
-        <button class="nav-toggler" id="navToggler"><i class="fas fa-bars"></i></button>
+        <button class="nav-toggler" id="navToggler" aria-label="Toggle navigation menu" aria-controls="navLinks" aria-expanded="false">
+            <i class="fas fa-bars" aria-hidden="true"></i>
+        </button>
     </nav>
 
     <header class="header" id="home">
-        <img src="assets/img/Profile.jpg" alt="Syed Ijlal">
-        <h1>Syed Ijlal</h1>
-        <p class="subtitle">Software Engineer</p>
-        <div class="contact-info">
-            <a href="mailto:syedijlalbzu@gmail.com"><i class="fas fa-envelope"></i> syedijlalbzu@gmail.com</a>
-            <a href="https://syed-ijlal.github.io" target="_blank"><i class="fas fa-globe"></i> Portfolio</a>
+        <img class="profile-img" src="assets/img/Profile.jpg" alt="Portrait of Hussain Syed Ijlal">
+        <p class="eyebrow"><i class="fas fa-graduation-cap" aria-hidden="true"></i> CSC Scholar | M.S. Software Engineering</p>
+        <h1>Hussain Syed Ijlal</h1>
+        <p class="subtitle">Software engineer focused on AI/ML, explainable financial anomaly detection, computer vision, and healthcare software systems.</p>
+        <div class="contact-info" aria-label="Contact links">
+            <span><i class="fas fa-location-dot" aria-hidden="true"></i> Shenyang, Liaoning, China</span>
+            <a href="mailto:syedijlalbzu@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> syedijlalbzu@gmail.com</a>
+            <a href="https://github.com/syed-ijlal" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+            <a href="https://syed-ijlal.github.io" target="_blank" rel="noopener noreferrer"><i class="fas fa-globe" aria-hidden="true"></i> Portfolio</a>
+        </div>
+        <div class="cta-row">
+            <a class="button primary" href="#projects"><i class="fas fa-code" aria-hidden="true"></i> View Projects</a>
+            <a class="button secondary" href="assets/CV_HUSSAIN_SYED_IJLAL.pdf" target="_blank" rel="noopener noreferrer"><i class="fas fa-file-lines" aria-hidden="true"></i> Download CV</a>
         </div>
     </header>
 
-    <main>
+    <main id="main">
         <section id="about" class="section">
             <h2 class="section-title">About</h2>
-            <p>M.S. candidate at Northeastern University, China, focusing on software engineering. B.S. in Computer Engineering (GPA 3.80/4.0, 1st in cohort) from Bahauddin Zakariya University, Pakistan. Research interests: Artificial Intelligence, Software Security. Recipient of Chinese Government Scholarship (CSC, 2023).</p>
+            <p class="lead">I am an M.S. Software Engineering candidate at Northeastern University, China, with a research focus on hybrid deep learning for financial anomaly detection and explanations. I earned a B.S. in Computer Engineering from Bahauddin Zakariya University, where I ranked 1st in my cohort, and I build practical systems across AI, backend engineering, healthcare platforms, computer vision, and IoT.</p>
+
+            <div class="highlights" aria-label="Profile highlights">
+                <div class="highlight"><strong>3.55/4.0</strong><span>M.S. GPA at Northeastern University</span></div>
+                <div class="highlight"><strong>3.80/4.0</strong><span>B.S. GPA, 1st in cohort</span></div>
+                <div class="highlight"><strong>CSC Scholar</strong><span>Chinese Government Scholarship recipient</span></div>
+                <div class="highlight"><strong>IELTS 7.0</strong><span>Fluent English; Chinese HSK 3</span></div>
+            </div>
+
             <div class="research-interests">
                 <h3>Research Interests</h3>
                 <ul>
-                    <li>Artificial Intelligence </li>
-                    <li>Software Security</li>
-                    <li>LLMs for NLP and generative AI</li>
+                    <li>Hybrid deep learning for financial anomaly detection</li>
+                    <li>Explainable AI using SHAP and LIME</li>
+                    <li>Computer vision and Vision Transformers</li>
+                    <li>Healthcare software systems and IoT monitoring</li>
+                    <li>Software security and reliable backend systems</li>
+                    <li>LLMs for NLP and generative AI applications</li>
                 </ul>
-            </div>
-            <div class="compact-list">
-                <div class="compact-item"><strong>Awards:</strong> CSC Full Scholarship (2023); Academic Distinction (BZU, 2023)</div>
-                <div class="compact-item"><strong>Languages:</strong> Pashto (Native), English (IELTS 7.0), Chinese (HSK 3)</div>
-                <div class="compact-item"><strong>Membership:</strong> ACM Student (No. 9867837, 2021–2025)</div>
             </div>
         </section>
 
         <section id="education" class="section">
             <h2 class="section-title">Education</h2>
             <div class="grid">
-                <div class="card">
-                    <h3>M.S. Software Engineering</h3>
-                    <p class="meta">Northeastern University, Shenyang, China | Sept. 2023 – June 2026 (Exp.)<br>GPA: 3.52/4.0</p>
-                    <p>Coursework: Advanced AI, Software Engineering, Algorithm Design, Applied Statistics</p>
-                </div>
-                <div class="card">
-                    <h3>B.S. Computer Engineering</h3>
-                    <p class="meta">Bahauddin Zakariya University, Multan, Pakistan | Sept. 2019 – July 2023<br>GPA: 3.80/4.0 (1st in Cohort)</p>
-                    <p>Thesis: A smart paitent health monitoring system using Internet of Things</p>
-                </div>
+                <article class="card">
+                    <h3>M.S. in Software Engineering</h3>
+                    <p class="meta">Northeastern University, Shenyang, China | Sept. 2023 - June 2026 (Expected)</p>
+                    <ul>
+                        <li>GPA: 3.55/4.0 | Chinese Government Scholarship (CSC)</li>
+                        <li>Thesis: Research and Implementation of a Hybrid Deep Learning Framework for Financial Anomaly Detection and Explanations</li>
+                        <li>Supervisor: Associate Prof. Zhang Yin</li>
+                    </ul>
+                </article>
+                <article class="card">
+                    <h3>B.S. in Computer Engineering</h3>
+                    <p class="meta">Bahauddin Zakariya University, Multan, Pakistan | Sept. 2019 - July 2023</p>
+                    <ul>
+                        <li>GPA: 3.80/4.0 | Ranked 1st in Cohort</li>
+                        <li>Thesis: IoT-Based Smart Patient Health Monitoring System</li>
+                        <li>Supervisor: Assistant Prof. Muhammad Waqar Ashraf</li>
+                    </ul>
+                </article>
             </div>
         </section>
 
         <section id="experience" class="section">
             <h2 class="section-title">Experience</h2>
             <div class="grid">
-                <div class="card">
-                    <h3>Software Engineering Training</h3>
-                    <p class="meta">NEUSOFT, Shenyang, China | Sept. 2024 – Mar. 2025</p>
+                <article class="card">
+                    <h3>Software Engineering Practical Training</h3>
+                    <p class="meta">NEUSOFT, Shenyang, China | Sept. 2024 - Mar. 2025</p>
                     <ul>
-                        <li>Scalable backend with Spring Boot microservices for healthcare</li>
-                        <li>Vue.js front-end; AI integrations (chatbot, cancer detection)</li>
+                        <li>Built scalable backend services with Java Spring Boot in a microservices architecture for healthcare platforms.</li>
+                        <li>Developed responsive Vue.js front-end interfaces, improving usability and accessibility.</li>
+                        <li>Integrated AI-driven tools including a chatbot and brain cancer detection module.</li>
                     </ul>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <h3>IT Intern</h3>
-                    <p class="meta">LESCO, Lahore, Pakistan | July – Sept. 2022</p>
+                    <p class="meta">Lahore Electric Supply Company (LESCO), Lahore, Pakistan | July 2022 - Sept. 2022</p>
                     <ul>
-                        <li>Virtualization for data center efficiency; reduced downtime</li>
-                        <li>Network monitoring; SLA-compliant issue resolution</li>
+                        <li>Enhanced data center efficiency through virtualization management and downtime reduction.</li>
+                        <li>Deployed network monitoring solutions and supported SLA-compliant issue resolution.</li>
                     </ul>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <h3>UI/UX Developer</h3>
-                    <p class="meta">PITB, Multan, Pakistan | June – Dec. 2021</p>
+                    <p class="meta">Punjab Information Technology Board (PITB), Multan, Pakistan | June 2021 - Dec. 2021</p>
                     <ul>
-                        <li>UI/UX prototypes for startups; enhanced user experience</li>
-                        <li>Developer collaboration for design implementation</li>
+                        <li>Designed intuitive UI/UX prototypes for startup products and public-sector digital services.</li>
+                        <li>Collaborated with developers to translate prototypes into accurate implementations.</li>
                     </ul>
-                </div>
+                </article>
             </div>
         </section>
 
         <section id="projects" class="section">
             <h2 class="section-title">Projects</h2>
             <div class="grid">
-                <div class="card">
+                <article class="card">
+                    <h3>Hybrid Deep Learning Framework for Financial Anomaly Detection</h3>
+                    <p class="meta">Master's Thesis | Mar. 2025 - Present</p>
+                    <ul>
+                        <li>Designed a Single Tower Hybrid Model combining Autoencoders and Transformers to model complex sequential transaction patterns.</li>
+                        <li>Integrated an explainability module with SHAP and LIME to convert feature importance into actionable narratives.</li>
+                    </ul>
+                    <div class="tag-row" aria-label="Technologies used">
+                        <span class="tag">Deep Learning</span><span class="tag">Transformers</span><span class="tag">XAI</span><span class="tag">Python</span>
+                    </div>
+                </article>
+                <article class="card">
                     <h3>Hospital Information System (HIS)</h3>
-                    <p class="meta">Nov. 2024 – Mar. 2025</p>
+                    <p class="meta">Nov. 2024 - Mar. 2025</p>
                     <ul>
-                        <li>Team lead: Spring Boot backend; 20% faster patient processing</li>
-                        <li>RESTful APIs, Vue.js, MySQL; AI analytics & tumor detection</li>
+                        <li>Led a four-person team to build a secure Spring Boot backend, reducing patient processing time by 20%.</li>
+                        <li>Designed RESTful APIs with Vue.js and MySQL for reliable clinical data management.</li>
+                        <li>Implemented AI features such as patient analytics and brain tumor detection.</li>
+                    </ul>
+                    <div class="tag-row" aria-label="Technologies used">
+                        <span class="tag">Spring Boot</span><span class="tag">Vue.js</span><span class="tag">MySQL</span><span class="tag">Healthcare AI</span>
+                    </div>
+                </article>
+                <article class="card">
+                    <h3>Steel Surface Defect Detection Using Vision Transformers</h3>
+                    <p class="meta">Nov. 2023 - Mar. 2024</p>
+                    <ul>
+                        <li>Applied Vision Transformers on the NEU dataset, improving defect detection accuracy by 15%.</li>
+                        <li>Optimized model performance through hyperparameter tuning and loss curve analysis.</li>
+                    </ul>
+                    <div class="tag-row" aria-label="Technologies used">
+                        <span class="tag">Vision Transformers</span><span class="tag">Computer Vision</span><span class="tag">NEU Dataset</span>
+                    </div>
+                </article>
+                <article class="card">
+                    <h3>IoT-Based Smart Patient Health Monitoring System</h3>
+                    <p class="meta">Bachelor's Thesis | Aug. 2022 - June 2023</p>
+                    <ul>
+                        <li>Developed a real-time IoT monitoring system with sensor integration and cloud-based alerts.</li>
+                        <li>Built the system for continuous patient monitoring and rapid health-status notification.</li>
+                    </ul>
+                    <div class="tag-row" aria-label="Technologies used">
+                        <span class="tag">IoT</span><span class="tag">Sensors</span><span class="tag">Cloud Alerts</span><span class="tag">Healthcare</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="skills" class="section">
+            <h2 class="section-title">Technical Proficiencies</h2>
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h4>Programming Languages</h4>
+                    <ul>
+                        <li>Python</li>
+                        <li>C++</li>
+                        <li>C#</li>
                     </ul>
                 </div>
-                <div class="card">
-                    <h3>Steel Surface Defect Detection</h3>
-                    <p class="meta">Nov. 2023 – Mar. 2024</p>
+                <div class="skill-item">
+                    <h4>Frameworks & Libraries</h4>
                     <ul>
-                        <li>Vision Transformers on NEU dataset; +15% accuracy</li>
-                        <li>Hyperparameter tuning, loss analysis</li>
+                        <li>Spring Boot</li>
+                        <li>Vue.js</li>
+                        <li>TensorFlow</li>
+                        <li>Scikit-learn</li>
                     </ul>
                 </div>
-                <div class="card">
-                    <h3>A smart paitent health monitoring system using Internet of Things (Thesis)</h3>
-                    <p class="meta">Aug. 2022 – June 2023</p>
+                <div class="skill-item">
+                    <h4>Tools & Databases</h4>
                     <ul>
-                        <li>Real-time IoT system with sensors, cloud alerts</li>
-                        <li>Deployed for continuous monitoring</li>
+                        <li>Docker, Git, Postman</li>
+                        <li>MySQL, Oracle</li>
+                        <li>MATLAB, LaTeX</li>
+                    </ul>
+                </div>
+                <div class="skill-item">
+                    <h4>Systems</h4>
+                    <ul>
+                        <li>Linux</li>
+                        <li>Windows</li>
                     </ul>
                 </div>
             </div>
         </section>
 
-        <section id="skills" class="section">
-            <h2 class="section-title">Skills & Certifications</h2>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <h4>Programming</h4>
-                    <ul>
-                        <li>Python, C++, C#</li>
-                    </ul>
-                </div>
-                <div class="skill-item">
-                    <h4>Frameworks/Libraries</h4>
-                    <ul>
-                        <li>Spring Boot, Vue.js</li>
-                        <li>TensorFlow, Scikit-learn</li>
-                    </ul>
-                </div>
-                <div class="skill-item">
-                    <h4>Tools/Systems</h4>
-                    <ul>
-                        <li>Docker, Git, MySQL, Oracle, Postman</li>
-                        <li>Linux, Windows</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="compact-list" style="margin-top: 1rem;">
-                <div class="compact-item"><strong>MongoDB Python Developer</strong> (MongoDB, 2024)</div>
-                <div class="compact-item"><strong>Python for Data Science & AI</strong> (Coursera, 2023)</div>
-                <div class="compact-item"><strong>Scientific Paper Writing</strong> (Ecole Polytechnique, 2024)</div>
-                <div class="compact-item"><strong>AI for Professionals</strong> (VU, 2023)</div>
-                <div class="compact-item"><strong>Data Engineering Intro</strong> (Coursera, 2023)</div>
-                <div class="compact-item"><strong>Cybersecurity Essentials</strong> (Cisco, 2022)</div>
-                <div class="compact-item"><strong>AI (ML)</strong> (NAVTTC, 2020–2021)</div>
+        <section id="certifications" class="section">
+            <h2 class="section-title">Certifications, Awards & Languages</h2>
+            <div class="compact-list">
+                <div class="compact-item"><strong>Introduction to Supercomputing at JSC</strong> - Forschungszentrum Juelich, 2025</div>
+                <div class="compact-item"><strong>Topics in Digital and Computational Demography</strong> - IMPRS, 2025</div>
+                <div class="compact-item"><strong>Sustainable Product Design in a Digital Age</strong> - EIT Higher Education Initiative, 2025</div>
+                <div class="compact-item"><strong>MongoDB Python Developer Path</strong> - MongoDB, 2024</div>
+                <div class="compact-item"><strong>Python for Data Science and AI</strong> - Coursera, 2023</div>
+                <div class="compact-item"><strong>How to Write and Publish a Scientific Paper</strong> - Ecole Polytechnique, 2024</div>
+                <div class="compact-item"><strong>Artificial Intelligence for IT and Non-IT Professionals</strong> - VU, 2023</div>
+                <div class="compact-item"><strong>Introduction to Data Engineering</strong> - Coursera, 2023</div>
+                <div class="compact-item"><strong>Cybersecurity Essentials</strong> - Cisco, 2022</div>
+                <div class="compact-item"><strong>Artificial Intelligence (Machine Learning)</strong> - NAVTTC, 2020-2021</div>
+                <div class="compact-item"><strong>Awards:</strong> Chinese Government Scholarship (Full Funding), CSC 2023; Academic Distinction, BZU 2023</div>
+                <div class="compact-item"><strong>Languages:</strong> Pashto (Native), English (IELTS 7.0), Chinese (HSK 3 - 210/300)</div>
+                <div class="compact-item"><strong>Membership:</strong> ACM Student Member No. 9867837, Apr. 2021 - Mar. 2025</div>
             </div>
         </section>
 
         <section id="contact" class="section contact">
             <h2 class="section-title">Contact</h2>
-            <p>Reach out for collaborations in AI/ML or software projects.</p>
-            <div class="social-links">
-                <a href="https://www.linkedin.com/in/syed-ijlal/" target="_blank"><i class="fab fa-linkedin"></i></a>
-                <a href="https://github.com/syed-ijlal" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://syed-ijlal.github.io" target="_blank"><i class="fas fa-globe"></i></a>
+            <p class="lead">Reach out for collaborations in AI/ML, explainable anomaly detection, healthcare systems, computer vision, or backend software engineering.</p>
+            <div class="cta-row">
+                <a class="button primary" href="mailto:syedijlalbzu@gmail.com"><i class="fas fa-envelope" aria-hidden="true"></i> Email Me</a>
+                <a class="button secondary" href="https://github.com/syed-ijlal" target="_blank" rel="noopener noreferrer"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a>
+            </div>
+            <div class="social-links" aria-label="Social links">
+                <a href="https://www.linkedin.com/in/syed-ijlal/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
+                <a href="https://github.com/syed-ijlal" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                <a href="https://syed-ijlal.github.io" target="_blank" rel="noopener noreferrer" aria-label="Portfolio"><i class="fas fa-globe" aria-hidden="true"></i></a>
+                <a href="mailto:syedijlalbzu@gmail.com" aria-label="Email"><i class="fas fa-envelope" aria-hidden="true"></i></a>
             </div>
         </section>
     </main>
 
     <footer>
-        <p>&copy; 2025 Syed Ijlal. Shenyang, China.</p>
+        <p>&copy; <span id="year">2026</span> Hussain Syed Ijlal. Shenyang, China.</p>
     </footer>
 
     <script>
         const navLinksContainer = document.getElementById('navLinks');
         const navToggler = document.getElementById('navToggler');
         const navLinks = document.querySelectorAll('.nav-links a');
+        const year = document.getElementById('year');
+
+        if (year) {
+            year.textContent = new Date().getFullYear();
+        }
 
         navToggler.addEventListener('click', () => {
-            navLinksContainer.classList.toggle('active');
+            const isOpen = navLinksContainer.classList.toggle('active');
+            navToggler.setAttribute('aria-expanded', String(isOpen));
             const icon = navToggler.querySelector('i');
-            icon.classList.toggle('fa-bars');
-            icon.classList.toggle('fa-times');
+            icon.classList.toggle('fa-bars', !isOpen);
+            icon.classList.toggle('fa-times', isOpen);
         });
 
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
-                if (navLinksContainer.classList.contains('active')) {
-                    navLinksContainer.classList.remove('active');
-                    navToggler.querySelector('i').classList.remove('fa-times');
-                    navToggler.querySelector('i').classList.add('fa-bars');
-                }
+                navLinksContainer.classList.remove('active');
+                navToggler.setAttribute('aria-expanded', 'false');
+                navToggler.querySelector('i').classList.remove('fa-times');
+                navToggler.querySelector('i').classList.add('fa-bars');
             });
         });
 
-        // Simple scroll for active nav
-        window.addEventListener('scroll', () => {
-            let current = '';
-            document.querySelectorAll('section[id]').forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
+        const sections = document.querySelectorAll('main section[id]');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (!entry.isIntersecting) return;
+
+                navLinks.forEach(link => {
+                    const isCurrent = link.getAttribute('href') === `#${entry.target.id}`;
+                    link.classList.toggle('active', isCurrent);
+                    if (isCurrent) {
+                        link.setAttribute('aria-current', 'page');
+                    } else {
+                        link.removeAttribute('aria-current');
+                    }
+                });
             });
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
+        }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
+
+        sections.forEach(section => observer.observe(section));
     </script>
 </body>
 </html>
